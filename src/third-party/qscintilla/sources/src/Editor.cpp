@@ -275,7 +275,7 @@ void Editor::SetRepresentations() {
 		for (int k=0x80; k < 0x100; k++) {
 			char hiByte[2] = {  static_cast<char>(k), 0 };
 			char hexits[4];
-			sprintf(hexits, "x%2X", k);
+			//sprintf(hexits, "x%2X", k);
 			reprs.SetRepresentation(hiByte, hexits);
 		}
 	}

@@ -5,4 +5,4 @@ PROJECT_DIR=$(dirname $BIN_DIR)                                   # Get root dir
 source $BIN_DIR/common/setup $1
 
 cd $BUILD_DIR
-cmake --build . "${@:2}" -- -j8
+cmake --build . "${@:2}" -- -j4
