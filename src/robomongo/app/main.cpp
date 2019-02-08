@@ -22,9 +22,8 @@
 #include "robomongo/ssh/ssh.h"
 
 
-int main(int argc, char *argv[], char** envp)
-{
-    if (rbm_ssh_init()) 
+int main(int argc, char *argv[], char **envp) {
+    if (rbm_ssh_init())
         return 1;
 
     // Please check, do we really need envp for other OSes?
@@ -38,8 +37,15 @@ int main(int argc, char *argv[], char** envp)
     // Perform SSL-enabled mongo initialization
     mongo::sslGlobalParams.sslMode.store(mongo::SSLParams::SSLMode_allowSSL);
 
-    // Cross Platform High DPI support - Qt 5.7
-    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+
+    std::string arg1 = argc > 1 ? argv[1] : "";
+    if ("no-hdpi-scaling" == arg1) {
+        std::cout << "HDPI Scaling disabled" << std::endl;
+    } else {
+        std::cout << "HDPI Scaling enabled" << std::endl;
+        // Cross Platform High DPI support - Qt 5.7
+        QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    }
 
     // Initialization routine for MongoDB shell
     mongo::runGlobalInitializersOrDie(argc, argv, envp);
@@ -50,10 +56,10 @@ int main(int argc, char *argv[], char** envp)
     opts.enableIPv6 = mongo::shellGlobalParams.enableIPv6;
     opts.mode = mongo::transport::TransportLayerASIO::Options::kEgress;
     serviceContext->setTransportLayer(
-        std::make_unique<mongo::transport::TransportLayerASIO>(opts, nullptr));
+            std::make_unique<mongo::transport::TransportLayerASIO>(opts, nullptr));
     auto tlPtr = serviceContext->getTransportLayer();
     uassertStatusOK(tlPtr->setup());
-    uassertStatusOK(tlPtr->start());    
+    uassertStatusOK(tlPtr->start());
 
     // Initialize Qt application
     QApplication app(argc, argv);
@@ -71,7 +77,7 @@ int main(int argc, char *argv[], char** envp)
     app.setAttribute(Qt::AA_UseHighDpiPixmaps);
 #endif
 
-    auto const& settingsManager = Robomongo::AppRegistry::instance().settingsManager();    
+    auto const &settingsManager = Robomongo::AppRegistry::instance().settingsManager();
     // Disable HTTPS and do not show EULA form if program exited abnormally
     bool showEulaDialogForm = true;
     if (!settingsManager->programExitedNormally()) {
@@ -79,10 +85,10 @@ int main(int argc, char *argv[], char** envp)
         settingsManager->setUseHttps(false);
         settingsManager->save();
     }
-    
+
     if (!settingsManager->useHttps())
         showEulaDialogForm = false;
-    
+
     // EULA License Agreement
     if (!settingsManager->acceptedEulaVersions().contains(PROJECT_VERSION)) {
         Robomongo::EulaDialog eulaDialog(showEulaDialogForm);
@@ -98,7 +104,7 @@ int main(int argc, char *argv[], char** envp)
         // EULA accepted
         settingsManager->addAcceptedEulaVersion(PROJECT_VERSION);
         settingsManager->save();
-    }  
+    }
 
     // Init GUI style
     Robomongo::AppStyleUtils::initStyle();

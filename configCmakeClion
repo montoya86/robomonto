@@ -1,0 +1,8 @@
+CMAKE_PREFIX_PATH=/home/jmontoya/devel/Qt/5.9.3/gcc_64/;/home/jmontoya/CLionProjects/robomongo/robomongo-shell;/home/jmontoya/CLionProjects/anotheropenssl/openssl-1.0.1u
+CMAKE_BUILD_TYPE=Release
+CMAKE_INSTALL_PREFIX=/home/jmontoya/CLionProjects/robomongo/robomongo/build/release/install
+PROJECT_DIRÇ=/home/jmontoya/CLionProjects/robomongo/robomongo
+
+//AIXO ES PER POSAR AL CMAKE SETTINGS
+-DCMAKE_PREFIX_PATH=/home/jmontoya/devel/Qt/5.9.3/gcc_64/;/home/jmontoya/CLionProjects/robomongo/robomongo-shell;/home/jmontoya/CLionProjects/anotheropenssl/openssl-1.0.1u -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/home/jmontoya/CLionProjects/robomongo/robomongo/build/release/install /home/jmontoya/CLionProjects/robomongo/robomongo
+

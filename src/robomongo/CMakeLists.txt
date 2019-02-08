@@ -127,6 +127,10 @@ set(SOURCES
     gui/widgets/workarea/WorkAreaTabWidget.cpp
     gui/widgets/workarea/WelcomeTab.cpp
 
+    # DON'T KNOW WHAT I'M DOING
+    gui/widgets/history/HistoryWidget.h
+    gui/widgets/history/HistoryWidget.cpp
+
     # Final scope
     gui/widgets/LogWidget.cpp
     gui/MainWindow.cpp

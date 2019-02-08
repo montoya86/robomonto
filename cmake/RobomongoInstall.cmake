@@ -108,7 +108,7 @@ if(SYSTEM_LINUX)
     install(
         FILES
             "/usr/lib/x86_64-linux-gnu/libstdc++.so.6"
-            "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.22"
+            "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25"
         DESTINATION ${lib_dir})
 elseif(SYSTEM_MACOSX)
     install_qt_lib(MacExtras DBus)

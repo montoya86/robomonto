@@ -526,7 +526,7 @@ namespace Robomongo
 
     /*** About menu ***/
 
-        QAction *aboutRobomongoAction = new QAction("&About Robo 3T...", this);
+        QAction *aboutRobomongoAction = new QAction("&About RoboMonto...", this);
         VERIFY(connect(aboutRobomongoAction, SIGNAL(triggered()), this, SLOT(aboutRobomongo())));
 
         // Options menu
@@ -624,7 +624,7 @@ namespace Robomongo
 
         createTabs();
         createStatusBar();
-        setWindowTitle("Robo 3T - " + QString(PROJECT_VERSION_SHORT) + " Beta");
+        setWindowTitle("RoboMonto - " + QString(PROJECT_VERSION_SHORT) + " Beta");
         setWindowIcon(GuiRegistry::instance().mainWindowIcon());
 
         QTimer::singleShot(0, this, SLOT(manageConnections()));       
@@ -1219,7 +1219,7 @@ namespace Robomongo
     {
 #if defined(Q_OS_WIN)
         if (_trayIcon->contextMenu()->actions().size() > 0 && isHidden()) {
-            _trayIcon->contextMenu()->actions().at(0)->setText("Show Robo 3T");
+            _trayIcon->contextMenu()->actions().at(0)->setText("Show RoboMonto");
         }
 #endif
     }
