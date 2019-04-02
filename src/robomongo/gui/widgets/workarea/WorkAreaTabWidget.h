@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QTabWidget>
+#include <robomongo/gui/widgets/history/HistoryWidget.h>
 
 namespace Robomongo
 {
@@ -30,6 +31,7 @@ namespace Robomongo
         QueryWidget *queryWidget(int index);
         WelcomeTab *getWelcomeTab();
         void openWelcomeTab();
+        HistoryWidget* _historyWidget;
 
     public Q_SLOTS:
         void handle(OpeningShellEvent *event);

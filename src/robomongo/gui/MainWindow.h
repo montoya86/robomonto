@@ -135,6 +135,7 @@ namespace Robomongo
         void adjustUpdatesBarHeight();
 
         QDockWidget *_logDock;
+        QDockWidget *_historyDock;
 
         WorkAreaTabWidget *_workArea;
 

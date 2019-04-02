@@ -21,7 +21,6 @@ namespace Robomongo
         void stop();
         MongoServer *server() const { return _server; }
         std::string query() const;
-        void execute(const std::string &script = "", const std::string &dbName = "");
         bool isExecutable() const { return _scriptInfo.execute(); }
         const QString &title() const { return _scriptInfo.title(); }
         std::string dbname() const { return _scriptInfo.dbname(); }
@@ -33,6 +32,9 @@ namespace Robomongo
         bool saveToFile();
         bool saveToFileAs();
         bool loadFromFile();
+
+    //Q_SIGNALS:
+        void execute(const std::string &script = "", const std::string &dbName = "");
 
     protected Q_SLOTS:
         void handle(ExecuteQueryResponse *event);

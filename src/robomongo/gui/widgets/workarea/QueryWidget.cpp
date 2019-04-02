@@ -35,6 +35,7 @@
 #include "robomongo/gui/editors/PlainJavaScriptEditor.h"
 #include "robomongo/gui/editors/JSLexer.h"
 #include "robomongo/gui/dialogs/ChangeShellTimeoutDialog.h"
+#include <robomongo/gui/widgets/history/HistoryWidget.h>
 
 using namespace mongo;
 
@@ -131,7 +132,9 @@ namespace Robomongo
             query = _scriptWidget->text();
 
         showProgress();
-        _shell->open(QtUtils::toStdString(query));
+        const std::string &script = QtUtils::toStdString(query);
+        _shell->open(script);
+        _historyWidget->addMessage(QString::fromStdString(script));
     }
 
     void QueryWidget::stop()

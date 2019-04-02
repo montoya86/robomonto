@@ -23,7 +23,12 @@ namespace Robomongo
                                                                         .arg(PROJECT_VERSION);  
     // Current config file directory
     auto const ConfigDir = QString("%1/.3T/robo-3t/%2/").arg(QDir::homePath())
-                                                        .arg(PROJECT_VERSION);  
+                                                        .arg(PROJECT_VERSION);
+    // Current history file
+    auto const HistoryFilePath = QString("%1/.3T/robo-3t/%2/robo3t-history.log").arg(QDir::homePath())
+            .arg(PROJECT_VERSION);
+
+
     /* Temporarily disabling Recent Connections feature
     struct RecentConnection
     {
